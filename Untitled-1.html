@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Портфолио</title>
+        <link href="Style.css" rel="stylesheet"/>
+    </head>
+    <body>
+
+      <header class="clearfix">
+        <div class="name" >
+          <h1 class="logo">MC</h1>
+          <h1 class="showTel"><a id = "Tel" style="cursor: pointer; ;" onclick = "showPhone()">Показать телефон</a></h1>
+          <script>
+            function showPhone() {
+              let telephone =  document.getElementById('Tel');
+              telephone.innerHTML = "<a class='number' href='tel:89222337734'>+7(922)233-77-34</a>";
+            }
+          </script>
+        </div>
+      </header>
+      <section>
+          <div class="info">
+            <div class="myPhoto" >
+              <img class="leftImage" src="img/LeftImage.jpg">
+              <img class="rightImage" src="img/RightPhoto.jpg" alt="">
+              <img class="midPhoto" src="img/МоеФото.jpg" alt="">
+            </div>
+            <div class="slider">
+              <div class="item">
+                <h1>обо мне</h1>
+                <p>
+                  Всем привет! Меня зовут Михаил, я студент 3 курса ЮУрГУ, 
+                  специальности "Фундаментальная информатика и информационные 
+                  технологии". В данное время развиваюсь в сфере Web разработки, также проходил 
+                  курс от NAPOLEON IT по разработке приложений на платформу Android
+                </p>
+              </div>
+              <div class="item">
+                <h1>Подробная информация</h1>
+                <div class="characteristics">
+                  <p>Пол - мужской.<img class="biceps_img" src="https://media.giphy.com/media/LqUHhB9VUIhrUCHsB5/giphy.gif" alt=""></p>
+                  <p>Возраст - 21 год.</p>
+                  <p>Рост - 175см.</p>
+                  <p>Вес - 85кг.</p>
+                </div>
+              </div>
+              <div class="item">
+                <h1>Мои увлечения</h1>
+                <p>Еще в школе одним из основных моих увлечений стал спорт.
+                  В основном, я занимался командными видами спорта такими как волейбол
+                  и баскетбол. В связи с переездом в Челябинск эти два спорта заменил тренажерный зал,
+                  но любовь к волейболу не остыла и частенько мы с командой собираемся поиграть.
+                </p>
+              </div>
+              <a class="prev" onclick="minusSlide()">&#10094;</a>
+              <a class="next" onclick="plusSlide()">&#10095;</a>
+            </div>
+            <script>
+              let slideIndex = 1;
+              showSlides(slideIndex);
+              function plusSlide() {
+                  showSlides(slideIndex += 1);
+              }
+              function minusSlide() {
+                  showSlides(slideIndex -= 1);  
+              }
+              function currentSlide(n) {
+                  showSlides(slideIndex = n);
+              }
+              function showSlides(n) {
+                  let i;
+                  let slides = document.getElementsByClassName("item");
+                  let dots = document.getElementsByClassName("slider-dots_item");
+                  if (n > slides.length) {
+                    slideIndex = 1
+                  }
+                  if (n < 1) {
+                      slideIndex = slides.length
+                  }
+                  for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none";
+                  }
+                  for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                  }
+                  slides[slideIndex - 1].style.display = "block";
+                  dots[slideIndex - 1].className += " active";
+              }
+            </script>
+            <div class="slider-dots">
+              <span class="slider-dots_item" onclick="currentSlide(1)"></span> 
+              <span class="slider-dots_item" onclick="currentSlide(2)"></span> 
+              <span class="slider-dots_item" onclick="currentSlide(3)"></span> 
+            </div>
+          </div>
+      </section>
+      <footer>  
+          <div class="contacts">
+            <a href='mailto:www.missha@mail.ru'>www.missha@mail.ru</a>
+            <a href="https://vk.com/id145350210">VK</a>
+            <a href="https://www.instagram.com/31mishel29/?hl=ru">Inst</a>
+          </div>
+      </footer>
+    </body>
+</html>
